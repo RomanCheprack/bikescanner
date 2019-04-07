@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+  <html lang=”en”>
+    <head>
+      <meta charset=”UTF-8">
+      <meta name=”viewport” content=”width=device-width, initial-scale=1.0">
+      <meta http-equiv=”X-UA-Compatible” content=”ie=edge”>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+      <title>Webscraper in Python using Flask</title>
+    </head>
+    <body>
+      <form class="container" method="POST">
+        <div class="form-group">
+          <label for="searchterminput">What would you like to search for?</label>
+          <input name="search_term" type="text">
+          <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        </div>
+      </form>   
+      <div class="container">
+        <h1 style="text-align: center;">Bike-Discount.de Results</h1>
+        <div class="row">
+          {% for d in discount_res %}
+            <div class="col-xs-12 col-sm-4" style="padding: 15px;">
+              <div class="card" style="width: 18rem;">
+                <img src="{{ d['pro_img'] }}" class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title">{{ d['brand_name'] }}</h5>
+                  <p class="card-text">{{ d['price'] }}</p>
+                </div>
+                <div class="card-body">
+                  <a href="{{ d['link'] }}" target="_blank">Buy</a>
+                </div>
+              </div>
+            </div>  
+          {% endfor %}
+        </div>
+      </div> 
+      <div class=container>
+        <h1 style="text-align: center;">{{ displayed_url }}</h1>
+        <div class="row">
+          {% for d in merlin_res %}
+            <div class="col-xs-12 col-sm-4" style="padding: 15px;">
+              <div class="card" style="width: 18rem;">
+                <img src="{{ d['img'] }}" class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title">{{ d[brand] }}</h5>
+                  <p class="card-text">{{ d['brand_desc'] }}</p>
+                  <p class="card-text">{{ d['price'] }}</p>
+                </div>
+                <div class="card-body">
+                  <a href="{{ d['link'] }}" target="_blank">Buy</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>    
+    </body>
+  </html>
