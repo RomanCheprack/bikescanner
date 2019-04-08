@@ -35,7 +35,6 @@ reportlab==3.3.0
 requests==2.21.0
 six==1.10.0
 soupsieve==1.7.2
-vboxapi==1.0
 virtualenv==16.3.0
 Werkzeug==0.15.2
 xkit==0.0.0
