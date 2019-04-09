@@ -1,15 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
-	<form class="container" method="POST">
+	<form class="container text-center mt-3" method="POST">
     	<div class="form-group">
         	<label for="searchterminput">What would you like to search for?</label>
-        	<input name="search_term" type="text">
-        	<button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        	<input class="form-control" name="search_term" type="text">
+        	<button type="submit" class="btn btn-primary" name="submit" style="margin-top: 20px">Submit</button>
     	</div>
   	</form>
 	
 	<div class="container">
-		<h1 class="headers">Bike-discount.de Results</h1>
+		{% if request.method == 'GET' %}
+			<h2 class="text-center">HERE YOU YOU WILL SEE THE RESULTS</h2>
+		{% else %}
+			<h1 class="header">Showing results for: <p class="text-danger">{{ search_term }}</p></h1>
+			<h3></h3>
+		{% endif %}
 		<div class="row">
 			{% for d in discount_res %}
 				<div class="col-xs-12 col-sm-4">
@@ -19,12 +24,32 @@
 							<h5 class="card-title">{{ d['brand_name'] }}</h5>
 							<p class="card-text">{{ d['price'] }}</p>
 						</div>
-						<div class=""card-body>
+						<div class="card-body" style="text-align: center;">
 							<a href="{{ d['link'] }}" target="_blank">Buy</a>
 						</div>
 					</div>					
 				</div>
 			{% endfor %}
+			{% for d in merlin_res %}
+            <div class="col-xs-12 col-sm-4">
+	            <div class="card">
+	                <img src="{{ d['img'] }}" height="300" alt="">
+	                <div class="card-body">
+	                  <h5 class="card-title">{{ d[brand] }}</h5>
+	                  <p class="card-text">{{ d['brand_desc'] }}</p>
+	                  <p class="card-text">{{ d['price'] }}</p>
+	                </div>
+	                <div class="card-body">
+	                  <a href="{{ d['link'] }}" target="_blank">Buy</a>
+	                </div>
+	              </div>
+	            </div>
+	         {% endfor %}
 		</div>
 	</div>
+	<div class=container>
+        <div class="row">
+          
+        </div>
+    </div>
 {% endblock content %} 
