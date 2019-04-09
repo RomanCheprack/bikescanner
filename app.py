@@ -15,7 +15,7 @@ def search():
 		search_term = request.form['search_term']
 		discount_res = bike_discount(search_term)
 		merlin_res = merlin_bikes(search_term)
-		return render_template('search.html', discount_res=discount_res, merlin_res=merlin_res, search_term=search_term)
+		return render_template('search.html', discount_res=discount_res, merlin_res=merlin_res)
 	else:
 		return render_template('search.html')
 
