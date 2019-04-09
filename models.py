@@ -6,7 +6,7 @@ import app
 def bike_discount(search_term):
 	l = []
 	with requests.Session() as c:
-		url = "https://www.bike-discount.de/en/search?"
+		url = "https://www.bike-discount.de/en/search?currency=5&delivery_country=72"
 		search_term = {'q': search_term}
 		#c.get(url, params=search_term)
 		res = c.post(url, params=search_term)
