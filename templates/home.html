@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-  <a href="{{ url_for('search')}}">Check it out</a>
+	<header class="masthead" style='background-image: url(static/home-banner.jpg)'>
+		<div class="container h-100">
+		    <div class="row h-100 align-items-center">
+		      <div class="col-12 text-center" style="color: white;">
+		        <h1 class="font-weight-light">Vertically Centered Masthead Content</h1>
+		        <p class="lead">A great starter layout for a landing page</p>
+		        <a class="btn btn-primary" role="button" href="{{ url_for('search') }}">Search</a>  
+		      </div>
+		    </div>
+		</div>
+	</header>
 {% endblock content %}
           
   
