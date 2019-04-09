@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+	<form class="container" method="POST">
+    	<div class="form-group">
+        	<label for="searchterminput">What would you like to search for?</label>
+        	<input name="search_term" type="text">
+        	<button type="submit" class="btn btn-primary" name="submit">Submit</button>
+    	</div>
+  	</form>
+	
+	<div class="container">
+		<h1 class="headers">Bike-discount.de Results</h1>
+		<div class="row">
+			{% for d in discount_res %}
+				<div class="col-xs-12 col-sm-4">
+					<div class="card">
+						<img src="{{ d['pro_img'] }}" alt="">
+						<div class="card-body">
+							<h5 class="card-title">{{ d['brand_name'] }}</h5>
+							<p class="card-text">{{ d['price'] }}</p>
+						</div>
+						<div class=""card-body>
+							<a href="{{ d['link'] }}" target="_blank">Buy</a>
+						</div>
+					</div>					
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock content %} 

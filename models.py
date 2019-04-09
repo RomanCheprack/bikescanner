@@ -6,7 +6,7 @@ import app
 def bike_discount(search_term):
 	l = []
 	with requests.Session() as c:
-		url = "https://www.bike-discount.de/en/search?currency=5"
+		url = "https://www.bike-discount.de/en/search?"
 		search_term = {'q': search_term}
 		#c.get(url, params=search_term)
 		res = c.post(url, params=search_term)
@@ -26,6 +26,7 @@ def bike_discount(search_term):
 			d['link'] = link
 			d['price'] = price
 			l.append(d)
+	l_sorted = sorted(l, key = lambda i: i['price']) 
 	return l
 
 def merlin_bikes(search_term):
