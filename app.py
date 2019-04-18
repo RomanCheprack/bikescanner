@@ -19,8 +19,8 @@ def search():
 		with open('bike_discount.csv', 'r') as file:
 			data = csv.DictReader(file)
 			return render_template('search.html',search_term=search_term, data=data, merlin_res=merlin_res)
-	#else:
-	#	return render_template('search.html')
+	else:
+		return render_template('search.html')
 
 @app.route("/price")
 def price():
