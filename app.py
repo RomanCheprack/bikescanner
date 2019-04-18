@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, url_for
 from models import bike_discount, merlin_bikes
+import csv
 
 app = Flask(__name__)
 
@@ -15,10 +16,16 @@ def search():
 		search_term = request.form['search_term']
 		discount_res = bike_discount(search_term)
 		merlin_res = merlin_bikes(search_term)
-		return render_template('search.html', discount_res=discount_res, merlin_res=merlin_res)
-	else:
-		return render_template('search.html')
+		with open('bike_discount.csv', 'r') as file:
+			data = csv.DictReader(file)
+			return render_template('search.html',search_term=search_term, data=data, merlin_res=merlin_res)
+	#else:
+	#	return render_template('search.html')
 
+@app.route("/price")
+def price():
+	pass
+	
 
 
 if __name__ == '__main__':

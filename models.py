@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup as bs
+import csv
 import requests
 import app
 
@@ -8,7 +9,6 @@ def bike_discount(search_term):
 	with requests.Session() as c:
 		url = "https://www.bike-discount.de/en/search?currency=5&delivery_country=72"
 		search_term = {'q': search_term}
-		#c.get(url, params=search_term)
 		res = c.post(url, params=search_term)
 		soup = bs(res.text, "html.parser")
 		products = soup.find_all(class_="uk-width-1-2 uk-width-medium-1-3")
@@ -26,8 +26,12 @@ def bike_discount(search_term):
 			d['link'] = link
 			d['price'] = price
 			l.append(d)
-	l_sorted = sorted(l, key = lambda i: i['price']) 
-	return l
+	#l_sorted = sorted(l, key = lambda i: i['price']) 
+	keys = l[0].keys()
+	with open('bike_discount.csv', 'w') as file:
+		dict_writer = csv.DictWriter(file, keys)
+		dict_writer.writeheader()
+		dict_writer.writerows(l)
 
 def merlin_bikes(search_term):
 	with requests.Session() as r:
