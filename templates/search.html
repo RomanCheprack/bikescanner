@@ -17,34 +17,35 @@
 		{% endif %}
 		<div class="row">
 			{% for d in data %}
-				<div class="col-xs-12 col-sm-4">
-					<div class="card">
-						<img src="{{ d['pro_img'] }}" alt="">
+				<div class="col-xs-12 col-sm-4 mb-3">
+					<div class="card align-items-center">
+						<img class="product-img" src="{{ d['pro_img'] }}" alt="">
 						<div class="card-body">
 							<h5 class="card-title">{{ d['brand_name'] }}</h5>
+							<p class="card-text">{{ d['pro_desc'] }}</p>
 							<p class="card-text">{{ d['price'] }}</p>
 						</div>
-						<div class="card-body" style="text-align: center;">
+						<div class="card-body">
 							<a href="{{ d['link'] }}" target="_blank">Buy</a>
 						</div>
 					</div>					
 				</div>
 			{% endfor %}
 			{% for d in merlin_res %}
-            <div class="col-xs-12 col-sm-4">
-	            <div class="card">
-	                <img src="{{ d['img'] }}" height="300" alt="">
-	                <div class="card-body">
-	                  <h5 class="card-title">{{ d[brand] }}</h5>
-	                  <p class="card-text">{{ d['brand_desc'] }}</p>
-	                  <p class="card-text">{{ d['price'] }}</p>
-	                </div>
-	                <div class="card-body">
-	                  <a href="{{ d['link'] }}" target="_blank">Buy</a>
-	                </div>
-	              </div>
+            	<div class="col-xs-12 col-sm-4 mb-3">
+	            	<div class="card align-items-center">
+	                	<img class="product-img" src="{{ d['img'] }}" alt="">
+	                	<div class="card-body">
+	                  		<h5 class="card-title">{{ d[brand] }}</h5>
+	                  		<p class="card-text">{{ d['brand_desc'] }}</p>
+	                  		<p class="card-text">{{ d['price'] }}</p>
+	                	</div>
+	                	<div class="card-body">
+	                  		<a href="{{ d['link'] }}" target="_blank">Buy</a>
+	                	</div>
+	              	</div>
 	            </div>
-	         {% endfor %}
+	        {% endfor %}
 		</div>
 	</div>
 	<div class=container>

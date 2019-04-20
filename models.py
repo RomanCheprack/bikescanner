@@ -22,7 +22,7 @@ def bike_discount(search_term):
 			price = card.find(class_="price-value").get_text().replace("€", "").replace(" ", "")
 			d['pro_img'] = pro_img
 			d['brand_name'] = brand_name
-			#d['pro_desc'] = pro_desc
+			d['pro_desc'] = pro_desc
 			d['link'] = link
 			d['price'] = price
 			l.append(d)
