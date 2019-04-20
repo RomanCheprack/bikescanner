@@ -4,6 +4,8 @@ import requests
 import app
 
 
+keys = ["pro_img", "brand_name", "pro_desc", "link", "price"]
+
 def bike_discount(search_term):
 	l = []
 	with requests.Session() as c:
@@ -27,7 +29,6 @@ def bike_discount(search_term):
 			d['price'] = price
 			l.append(d)
 	#l_sorted = sorted(l, key = lambda i: i['price']) 
-	keys = l[1].keys()
 	with open('database.csv', 'w') as file:
 		dict_writer = csv.DictWriter(file, keys)
 		dict_writer.writeheader()
@@ -57,11 +58,9 @@ def merlin_bikes(search_term):
 			d["price"] = price
 			l.append(d)
 	
-	keys = l[1].keys()
 	with open('database.csv', 'a') as file:
 		dict_writer = csv.DictWriter(file, keys)
-		#dict_writer.writeheader()
-		dict_writer.writerows(l)
+		dict_writer.writerows(l)		
 	
 
 def bike24(search_term):
@@ -88,8 +87,6 @@ def bike24(search_term):
 			d['link'] = link
 			d['price'] = price
 			l.append(d)
-	keys = l[1].keys()
 	with open('database.csv', 'a') as file:
 		dict_writer = csv.DictWriter(file, keys)
-		#dict_writer.writeheader()
 		dict_writer.writerows(l)
